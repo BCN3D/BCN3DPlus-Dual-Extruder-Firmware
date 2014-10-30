@@ -321,8 +321,9 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 
 // Travel limits after homing
 //Changes Rapduch v3.0  (242.5-230=12.5), (210-190=20) from BCN3D+
+//#define X_MAX_POS 230-55 (Space lost to dual extruder carriage offset)
+//#define X_MAX_POS 175
 #define X_MAX_POS 230
-//#define X_MAX_POS 239.5
 #define X_MIN_POS 0
 #define Y_MAX_POS 190
 //#define Y_MAX_POS 180
