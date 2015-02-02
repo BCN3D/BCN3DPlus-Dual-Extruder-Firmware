@@ -124,7 +124,7 @@ static void lcd_implementation_init()
                       	
 			//Rapduch
 			u8g.setPrintPos(83,51);
-			u8g.print("v3.0.2");
+			u8g.print("v3.0.3");
 						  
 				/*
             u8g.drawStr(62,10,"MARLIN"); 

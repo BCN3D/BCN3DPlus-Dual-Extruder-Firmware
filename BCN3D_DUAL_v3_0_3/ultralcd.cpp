@@ -374,6 +374,17 @@ void lcd_preheat_laybrick()
     setWatch(); // heater sanity check timer
 }
 
+void lcd_preheat_filaflex()
+{
+	setTargetHotend0(FILAFLEX_PREHEAT_HOTEND_TEMP);
+	setTargetHotend1(FILAFLEX_PREHEAT_HOTEND_TEMP);
+	setTargetHotend2(FILAFLEX_PREHEAT_HOTEND_TEMP);
+	setTargetBed(FILAFLEX_PREHEAT_HPB_TEMP);
+	fanSpeed = FILAFLEX_PREHEAT_FAN_SPEED;
+	lcd_return_to_status();
+	setWatch(); // heater sanity check timer
+}
+
 void lcd_preheat_pla0()
 {
     setTargetHotend0(plaPreheatHotendTemp);
@@ -414,6 +425,12 @@ void lcd_preheat_laybrick0()
     setTargetHotend0(LAYBRICK_PREHEAT_HOTEND_TEMP);
     lcd_return_to_status();
     setWatch(); // heater sanity check timer
+}
+void lcd_preheat_filaflex0()
+{
+	setTargetHotend0(FILAFLEX_PREHEAT_HOTEND_TEMP);
+	lcd_return_to_status();
+	setWatch(); // heater sanity check timer
 }
 void lcd_preheat_pla1()
 {
@@ -458,6 +475,13 @@ void lcd_preheat_laybrick1()
     setWatch(); // heater sanity check timer
 }
 
+void lcd_preheat_filaflex1()
+{
+	setTargetHotend1(FILAFLEX_PREHEAT_HOTEND_TEMP);
+	lcd_return_to_status();
+	setWatch(); // heater sanity check timer
+}
+
 void lcd_preheat_pla_hb()
 {
       setTargetBed(PLA_PREHEAT_HPB_TEMP);
@@ -500,6 +524,14 @@ void lcd_preheat_laybrick_hb()
     lcd_return_to_status();
     setWatch(); // heater sanity check timer
 }
+
+void lcd_preheat_filaflex_hb()
+{
+	setTargetBed(FILAFLEX_PREHEAT_HOTEND_TEMP);
+	lcd_return_to_status();
+	setWatch(); // heater sanity check timer
+}
+
 static void lcd_cooldown()
 {
     setTargetHotend0(0);
@@ -572,6 +604,7 @@ static void lcd_preheat_all_menu()
     MENU_ITEM(function, MSG_PREHEAT_PVA, lcd_preheat_pva);
     MENU_ITEM(function, MSG_PREHEAT_LAYWOOD, lcd_preheat_laywood);
     MENU_ITEM(function, MSG_PREHEAT_LAYBRICK, lcd_preheat_laybrick);
+	MENU_ITEM(function, MSG_PREHEAT_FILAFLEX, lcd_preheat_filaflex);
     END_MENU();
 } 
 
@@ -585,6 +618,7 @@ static void lcd_preheat_nozzle0_menu()
     MENU_ITEM(function, MSG_PREHEAT_PVA, lcd_preheat_pva0);
     MENU_ITEM(function, MSG_PREHEAT_LAYWOOD, lcd_preheat_laywood0);
     MENU_ITEM(function, MSG_PREHEAT_LAYBRICK, lcd_preheat_laybrick0);
+	MENU_ITEM(function, MSG_PREHEAT_FILAFLEX, lcd_preheat_filaflex0);
     END_MENU();
 }
 
@@ -598,6 +632,7 @@ static void lcd_preheat_nozzle1_menu()
     MENU_ITEM(function, MSG_PREHEAT_PVA, lcd_preheat_pva1);
     MENU_ITEM(function, MSG_PREHEAT_LAYWOOD, lcd_preheat_laywood1);
     MENU_ITEM(function, MSG_PREHEAT_LAYBRICK, lcd_preheat_laybrick1);
+	MENU_ITEM(function, MSG_PREHEAT_FILAFLEX, lcd_preheat_filaflex1);
     END_MENU();
 }
 
@@ -611,6 +646,7 @@ static void lcd_preheat_hb_menu()
     MENU_ITEM(function, MSG_PREHEAT_PVA, lcd_preheat_pla_hb);
     MENU_ITEM(function, MSG_PREHEAT_LAYWOOD, lcd_preheat_laywood_hb);
     MENU_ITEM(function, MSG_PREHEAT_LAYBRICK, lcd_preheat_laybrick_hb);
+	MENU_ITEM(function, MSG_PREHEAT_FILAFLEX, lcd_preheat_filaflex_hb);
     END_MENU();
 }
 
