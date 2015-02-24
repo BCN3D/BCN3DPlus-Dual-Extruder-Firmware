@@ -325,8 +325,7 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 //#define X_MAX_POS 175
 #define X_MAX_POS 230
 #define X_MIN_POS 0
-#define Y_MAX_POS 190
-//#define Y_MAX_POS 180
+#define Y_MAX_POS 200
 #define Y_MIN_POS 0
 #define Z_MAX_POS 200
 #define Z_MIN_POS 0
@@ -393,12 +392,12 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 #define PLA_PREHEAT_HPB_TEMP 45
 #define PLA_PREHEAT_FAN_SPEED 0   // Insert Value between 0 and 255
 
-#define ABS_PREHEAT_HOTEND_TEMP 245
-#define ABS_PREHEAT_HPB_TEMP 75
+#define ABS_PREHEAT_HOTEND_TEMP 240
+#define ABS_PREHEAT_HPB_TEMP 70
 #define ABS_PREHEAT_FAN_SPEED 0   // Insert Value between 0 and 255
 
-#define NYLON_PREHEAT_HOTEND_TEMP 225
-#define NYLON_PREHEAT_HPB_TEMP 60
+#define NYLON_PREHEAT_HOTEND_TEMP 245
+#define NYLON_PREHEAT_HPB_TEMP 0
 #define NYLON_PREHEAT_FAN_SPEED 0   // Insert Value between 0 and 255
 
 #define PVA_PREHEAT_HOTEND_TEMP 180
@@ -413,8 +412,8 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 #define LAYBRICK_PREHEAT_HPB_TEMP 40
 #define LAYBRICK_PREHEAT_FAN_SPEED 0   // Insert Value between 0 and 255
 
-#define FILAFLEX_PREHEAT_HOTEND_TEMP 240
-#define FILAFLEX_PREHEAT_HPB_TEMP 30
+#define FILAFLEX_PREHEAT_HOTEND_TEMP 230
+#define FILAFLEX_PREHEAT_HPB_TEMP 0
 #define FILAFLEX_PREHEAT_FAN_SPEED 0   // Insert Value between 0 and 255
 
 
