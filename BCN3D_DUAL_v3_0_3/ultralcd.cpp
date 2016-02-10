@@ -527,7 +527,7 @@ void lcd_preheat_laybrick_hb()
 
 void lcd_preheat_filaflex_hb()
 {
-	setTargetBed(FILAFLEX_PREHEAT_HOTEND_TEMP);
+	setTargetBed(FILAFLEX_PREHEAT_HPB_TEMP);
 	lcd_return_to_status();
 	setWatch(); // heater sanity check timer
 }
