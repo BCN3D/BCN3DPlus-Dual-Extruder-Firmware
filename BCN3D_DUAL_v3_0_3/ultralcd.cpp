@@ -378,7 +378,6 @@ void lcd_preheat_filaflex()
 {
 	setTargetHotend0(FILAFLEX_PREHEAT_HOTEND_TEMP);
 	setTargetHotend1(FILAFLEX_PREHEAT_HOTEND_TEMP);
-	setTargetHotend2(FILAFLEX_PREHEAT_HOTEND_TEMP);
 	setTargetBed(FILAFLEX_PREHEAT_HPB_TEMP);
 	fanSpeed = FILAFLEX_PREHEAT_FAN_SPEED;
 	lcd_return_to_status();
@@ -527,7 +526,7 @@ void lcd_preheat_laybrick_hb()
 
 void lcd_preheat_filaflex_hb()
 {
-	setTargetBed(FILAFLEX_PREHEAT_HOTEND_TEMP);
+	setTargetBed(FILAFLEX_PREHEAT_HPB_TEMP);
 	lcd_return_to_status();
 	setWatch(); // heater sanity check timer
 }
@@ -536,7 +535,6 @@ static void lcd_cooldown()
 {
     setTargetHotend0(0);
     setTargetHotend1(0);
-    setTargetHotend2(0);
     setTargetBed(0);
     lcd_return_to_status();
 }
