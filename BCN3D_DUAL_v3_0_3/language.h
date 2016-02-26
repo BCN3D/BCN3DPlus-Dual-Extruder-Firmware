@@ -19,7 +19,7 @@
 // 10 Catalan
 
 #ifndef LANGUAGE_CHOICE
-#define LANGUAGE_CHOICE 1  // Pick your language from the list above
+#define LANGUAGE_CHOICE 1  // Pick your language from the list above ALEX NO ES POT CAMBIAR error compilació
 #endif
 
 #define PROTOCOL_VERSION "1.0"
@@ -119,6 +119,25 @@
 	#define MSG_YSTEPS "Ysteps/mm"
 	#define MSG_ZSTEPS "Zsteps/mm"
 	#define MSG_ESTEPS "Esteps/mm"
+  // ALEX
+  #ifndef MSG_X1OFFSET
+#define MSG_X1OFFSET                         "T1X Offset"
+#endif
+#ifndef MSG_Y1OFFSET
+#define MSG_Y1OFFSET                         "T1Y Offset"
+#endif
+#ifndef MSG_X2OFFSET
+#define MSG_X2OFFSET                         "T2X Offset"
+#endif
+#ifndef MSG_Y2OFFSET
+#define MSG_Y2OFFSET                         "T2Y Offset"
+#endif
+#ifndef MSG_X3OFFSET
+#define MSG_X3OFFSET                         "T3X Offset"
+#endif
+#ifndef MSG_Y3OFFSET
+#define MSG_Y3OFFSET                         "T3Y Offset"
+#endif
 	#define MSG_RECTRACT "Rectract"
 	#define MSG_TEMPERATURE "Temperature"
 	#define MSG_MOTION "Motion"

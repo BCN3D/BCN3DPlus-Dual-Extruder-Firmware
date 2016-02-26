@@ -210,5 +210,6 @@ extern unsigned long stoptime;
 
 // Handling multiple extruders pins
 extern uint8_t active_extruder;
-
+//KK ALEX A SOLUCIONAR ON DECALAR AQUESTA MATRIU
+extern float extruder_offset[2][4];
 #endif

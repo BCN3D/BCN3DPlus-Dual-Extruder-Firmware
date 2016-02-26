@@ -167,14 +167,33 @@ float current_position[NUM_AXIS] = { 0.0, 0.0, 0.0, 0.0 };
 float add_homeing[3]={0,0,0};
 float min_pos[3] = { X_MIN_POS, Y_MIN_POS, Z_MIN_POS };
 float max_pos[3] = { X_MAX_POS, Y_MAX_POS, Z_MAX_POS };
+
 // Extruder offset, only in XY plane
+//#if EXTRUDERS > 1
+//float extruder_offset[2][EXTRUDERS] = {
+//#if defined(EXTRUDER_OFFSET_X) && defined(EXTRUDER_OFFSET_Y)
+//  EXTRUDER_OFFSET_X, EXTRUDER_OFFSET_Y
+//#endif
+//};
+//#endif
+// ALEX
 #if EXTRUDERS > 1
-float extruder_offset[2][EXTRUDERS] = {
-#if defined(EXTRUDER_OFFSET_X) && defined(EXTRUDER_OFFSET_Y)
-  EXTRUDER_OFFSET_X, EXTRUDER_OFFSET_Y
+   //extern float extruder_offset[2][4]; // 4 extruder offsets for future expandability
+   #ifndef EXTRUDER_OFFSET_X
+      #define EXTRUDER_OFFSET_X { 0.0, 0.0, 0.0, 0.0 } // 4 extruder offsets for future expandability
+   #endif
+   #ifndef EXTRUDER_OFFSET_Y
+      #define EXTRUDER_OFFSET_Y { 0.0, 0.0, 0.0, 0.0 }
+   #endif
+   float extruder_offset[][4] = {
+     EXTRUDER_OFFSET_X,
+     EXTRUDER_OFFSET_Y
+     //#if ENABLED(DUAL_X_CARRIAGE)
+     //  , { 0 } // supports offsets in XYZ plane
+     //#endif
+   };
 #endif
-};
-#endif
+
 uint8_t active_extruder = 0;
 int fanSpeed=0;
 #ifdef SERVO_ENDSTOPS
