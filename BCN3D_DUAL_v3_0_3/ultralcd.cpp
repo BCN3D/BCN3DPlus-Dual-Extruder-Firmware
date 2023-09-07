@@ -378,6 +378,7 @@ void lcd_preheat_filaflex()
 {
 	setTargetHotend0(FILAFLEX_PREHEAT_HOTEND_TEMP);
 	setTargetHotend1(FILAFLEX_PREHEAT_HOTEND_TEMP);
+	setTargetHotend2(FILAFLEX_PREHEAT_HOTEND_TEMP);
 	setTargetBed(FILAFLEX_PREHEAT_HPB_TEMP);
 	fanSpeed = FILAFLEX_PREHEAT_FAN_SPEED;
 	lcd_return_to_status();
@@ -524,9 +525,9 @@ void lcd_preheat_laybrick_hb()
     setWatch(); // heater sanity check timer
 }
 
-void lcd_preheat_filaflex_hb()
+void lcd_preheat_filaflex_hb() 
 {
-	setTargetBed(FILAFLEX_PREHEAT_HPB_TEMP);
+	setTargetBed(FILAFLEX_PREHEAT_HPB_TEMP); // FIXED
 	lcd_return_to_status();
 	setWatch(); // heater sanity check timer
 }
@@ -535,6 +536,7 @@ static void lcd_cooldown()
 {
     setTargetHotend0(0);
     setTargetHotend1(0);
+    setTargetHotend2(0);
     setTargetBed(0);
     lcd_return_to_status();
 }
@@ -644,7 +646,7 @@ static void lcd_preheat_hb_menu()
     MENU_ITEM(function, MSG_PREHEAT_PVA, lcd_preheat_pla_hb);
     MENU_ITEM(function, MSG_PREHEAT_LAYWOOD, lcd_preheat_laywood_hb);
     MENU_ITEM(function, MSG_PREHEAT_LAYBRICK, lcd_preheat_laybrick_hb);
-	MENU_ITEM(function, MSG_PREHEAT_FILAFLEX, lcd_preheat_filaflex_hb);
+	  MENU_ITEM(function, MSG_PREHEAT_FILAFLEX, lcd_preheat_filaflex_hb);
     END_MENU();
 }
 
@@ -814,13 +816,13 @@ static void lcd_control_menu()
     MENU_ITEM(back, MSG_MAIN, lcd_main_menu);
     MENU_ITEM(submenu, MSG_TEMPERATURE, lcd_control_temperature_menu);
     MENU_ITEM(submenu, MSG_MOTION, lcd_control_motion_menu);
-#ifdef FWRETRACT
+    #ifdef FWRETRACT
     MENU_ITEM(submenu, MSG_RETRACT, lcd_control_retract_menu);
-#endif
-#ifdef EEPROM_SETTINGS
+    #endif
+    #ifdef EEPROM_SETTINGS
     MENU_ITEM(function, MSG_STORE_EPROM, Config_StoreSettings);
     MENU_ITEM(function, MSG_LOAD_EPROM, Config_RetrieveSettings);
-#endif
+    #endif
     MENU_ITEM(function, MSG_RESTORE_FAILSAFE, Config_ResetDefault);
     END_MENU();
 }
@@ -922,6 +924,19 @@ static void lcd_control_motion_menu()
     MENU_ITEM_EDIT(float52, MSG_YSTEPS, &axis_steps_per_unit[Y_AXIS], 5, 9999);
     MENU_ITEM_EDIT(float51, MSG_ZSTEPS, &axis_steps_per_unit[Z_AXIS], 5, 9999);
     MENU_ITEM_EDIT(float51, MSG_ESTEPS, &axis_steps_per_unit[E_AXIS], 5, 9999);    
+    // ALEX
+    #if EXTRUDERS > 1
+    MENU_ITEM_EDIT(float52, MSG_X1OFFSET, &extruder_offset[X_AXIS][1], -200, 200);
+    MENU_ITEM_EDIT(float52, MSG_Y1OFFSET, &extruder_offset[Y_AXIS][1], -200, 200);
+  #endif // EXTRUDERS > 1
+  #if EXTRUDERS > 2
+    MENU_ITEM_EDIT(float52, MSG_X2OFFSET, &extruder_offset[X_AXIS][2], -200, 200);
+    MENU_ITEM_EDIT(float52, MSG_Y2OFFSET, &extruder_offset[Y_AXIS][2], -200, 200);
+  #endif // EXTRUDERS > 2
+  #if EXTRUDERS > 3
+    MENU_ITEM_EDIT(float52, MSG_X3OFFSET, &extruder_offset[X_AXIS][3], -200, 200);
+    MENU_ITEM_EDIT(float52, MSG_Y3OFFSET, &extruder_offset[Y_AXIS][3], -200, 200);
+  #endif // EXTRUDERS > 3
 #ifdef ABORT_ON_ENDSTOP_HIT_FEATURE_ENABLED
     MENU_ITEM_EDIT(bool, "Endstop abort", &abort_on_endstop_hit);
 #endif
